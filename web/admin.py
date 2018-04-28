@@ -51,7 +51,6 @@ class BasicInfoModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Basic_info, BasicInfoModelAdmin)
 
-
 admin.site.register(Slider)
 
 admin.site.register(Event)
@@ -60,7 +59,8 @@ admin.site.register(Project)
 
 admin.site.register(Testimonial)
 
-
 admin.site.register(UserMessage)
 
 admin.site.register(Profile)
+
+admin.site.register(Subcribe)

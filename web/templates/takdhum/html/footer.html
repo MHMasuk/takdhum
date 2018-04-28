@@ -55,10 +55,11 @@
                         <div class="footer-item">
                             <h6>Newsletter</h6>
                             <p>Enter your email and we'll send you more information of courses and scholarship.</p>
-                            <form class="uv-form footer-form">
+                            <form class="uv-form footer-form" method="post">
+                                {% csrf_token %}
                                 <div class="form-group relative">
                                     <div class="relative">
-                                        <input type="text" class="form-control" placeholder="Email Address" required>
+                                        <input type="text" class="form-control" name="subcriber_email" id="id_subcriber_email" placeholder="Email Address" required>
                                     </div>
                                 </div>
                                 <div class="footer-subs-btn">

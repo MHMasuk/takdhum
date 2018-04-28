@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from web.models import Profile
+from web.models import Profile, UserMessage, Subcribe
 
 
 class SignupForm(UserCreationForm):
@@ -36,3 +36,16 @@ class ProfileForm(forms.ModelForm):
         fields = ('bio', 'location')
 
 
+
+class ContactForm(forms.ModelForm):
+
+    class Meta:
+        model = UserMessage
+        fields = '__all__'
+
+
+class SubcriberForm(forms.ModelForm):
+
+    class Meta:
+        model = Subcribe
+        fields = '__all__'

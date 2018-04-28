@@ -10,6 +10,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
+"""
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -18,7 +19,11 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-
+"""
+@receiver(post_save, sender=User)
+def create_profile_for_user(sender, instance=None, created=False, **kwargs):
+    if created:
+        Profile.objects.get_or_create(user=instance)
 
 class CourseCategory(models.Model):
     category_name = models.CharField(max_length=50)
@@ -168,3 +173,9 @@ class UserMessage(models.Model):
         return self.first_name + self.last_name
 
 
+class Subcribe(models.Model):
+    subcriber_email = models.EmailField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.subcriber_email

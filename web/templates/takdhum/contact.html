@@ -21,22 +21,23 @@
                 {% if messages %}
                     <ul class="messages">
                         {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                         {% endfor %}
                     </ul>
                     {% endif %}
-                <form id="contactForm" class="single-form quate-form" data-toggle="validator" target="{% url 'user_message' %}" method="POST">
+                <form class="single-form quate-form" data-toggle="validator" target="#" method="POST">
                     {% csrf_token %}
                     <div id="msgSubmit" class="h3 text-center hidden"></div>
                     <div class="col-md-4">
-                        <input name="first_name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>
-                        <input name="last_name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>
-                        <input name="email" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
+                        <input name="first_name" class="contact-name form-control" id="id_name" type="text" placeholder="First Name" required>
+                        <input name="last_name" class="contact-email form-control" id="id_last_name" type="text" placeholder="Last Name" required>
+                        <input name="email" class="contact-subject form-control" id="is_email" type="email" placeholder="Your Email" required>
                     </div>
                     <div class="col-sm-12 col-md-8">
-                        <textarea class="contact-message form-control" id="message" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn btn-fill">send message <i class="icon icons8-advance" id="form-submit"></i></button>
+                        <textarea class="contact-message form-control"  name="message" id="id_message" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-fill">send message</button>
                     </div>
+
                 </form>
             </div>
             <div class="col-md-3 col-sm-12 col-xs-12 content-widget uv-contact-details-1">

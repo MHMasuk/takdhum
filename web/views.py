@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpResponse
-from .forms import SignupForm, UserMessageForm, UserForm, ProfileForm
+from .forms import SignupForm, UserMessageForm, UserForm, ProfileForm, ContactForm, SubcriberForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -19,6 +19,9 @@ from django.core.mail import EmailMessage
 
 
 # Create your views here.
+
+
+
 def index(request):
     """Takdhum home page"""
     # Need for all view
@@ -30,6 +33,14 @@ def index(request):
     events = Event.objects.all().order_by('-upload_time')
     projects = Project.objects.all().order_by('-upload_time')
     testimonials = Testimonial.objects.last()
+
+    if request.method == 'POST':
+        form = SubcriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'You successfully subscribe in Takdhum.')
+    else:
+        form = SubcriberForm()
     context = {
         'categories': categories,
         'slides': sliders,
@@ -38,6 +49,7 @@ def index(request):
         'events': events,
         'projects': projects,
         't': testimonials,
+        'form': form,
     }
     return render(request, 'takdhum/index.html', context)
 
@@ -56,8 +68,8 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
-            return redirect('user_profile')
+            #messages.success(request, _('Your profile was successfully updated!'))
+            return redirect('index')
         else:
             messages.error(request, _('Please correct the error below.'))
     else:
@@ -246,9 +258,17 @@ def contact(request):
     basic_info = Basic_info.objects.first()
     categories = CourseCategory.objects.all()
 
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = ContactForm()
     context = {
         'info': basic_info,
         'categories': categories,
+        'form': form,
     }
     return render(request, 'takdhum/contact.html', context)
 
