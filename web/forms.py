@@ -6,7 +6,7 @@ from web.models import Profile, UserMessage, Subcribe
 
 
 class SignupForm(UserCreationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class':"form-control", 'placeholder':"User Name", 'value':""}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':"form-control", 'placeholder':"UserID", 'value':""}))
     email = forms.EmailField(max_length=200, help_text='Required', widget=forms.TextInput(attrs={'class':"form-control", 'placeholder':"e-mail", 'value':""}))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password', 'value':''}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password', 'value':''}))
@@ -26,14 +26,14 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email')
+        fields = '__all__'
 
 
 class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('bio', 'location')
+        fields = '__all__'
 
 
 

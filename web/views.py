@@ -56,7 +56,7 @@ def index(request):
 
 class ProfilePage(generic.DetailView):
     model = User
-    template_name = 'takdhum/profile.html'
+    template_name = 'takdhum/user_profile.html'
 
 
 @login_required
@@ -64,7 +64,7 @@ class ProfilePage(generic.DetailView):
 def update_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -445,4 +445,17 @@ def get_sign_up(request):
         }
         return render(request, 'takdhum/register.html', context)
 
+
+class EventListView(generic.ListView):
+    template_name = 'takdhum/event_list.html'
+    context_object_name = 'events'
+
+    def get_queryset(self):
+        return Event.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(EventListView, self).get_context_data(**kwargs)
+        context['info'] = Basic_info.objects.first()
+        context['categories'] = CourseCategory.objects.all()
+        return context
 

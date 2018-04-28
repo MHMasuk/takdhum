@@ -24,4 +24,5 @@ urlpatterns = [
      views.activate, name='activate'),
     path('user_profile/<int:pk>/', views.ProfilePage.as_view(), name='user_profile'),
     path('update_profile/', views.update_profile, name='update_profile'),
+    path('events_list', views.EventListView.as_view(), name='event_list'),
 ]

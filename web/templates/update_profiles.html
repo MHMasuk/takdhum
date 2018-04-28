@@ -4,7 +4,7 @@
 {% block title %} {{ title }} {% endblock title %}
 {% block body %}
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form.as_p }}
         {{ profile_form.as_p }}

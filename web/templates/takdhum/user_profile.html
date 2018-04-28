@@ -31,13 +31,13 @@
                 <div class="uv-widget">
                     <div class="uv-student-avatar">
                         <figure>
-                            <img src="{% static 'takdhum/assets/images/student-1.png' %}" alt="">
+                            <img src="{{ user.profile.profile_picture.url }}" alt="">
                         </figure>
                     </div>
                     <div class="uv-student-info">
                         <h5>{{ user.username }}</h5>
                         <p>STUDENT ID</p>
-                        <label>12345</label>
+                        <label>{{ user.pk }}</label>
                     </div>
                     <div class="uv-student-infor-inner">
                         <h6>Program</h6>
@@ -66,7 +66,7 @@
                     <div class="uv-student-profile-details-header">
                         <div class="col-md-4 col-sm-12">
                             <div class="uv-student-img">
-                                <img src="{% static 'takdhum/assets/images/s-1.jpg' %}" alt="" class="img-responsive">
+                                <img src="{{ user.profile.profile_picture.url }}" alt="" class="img-responsive">
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-12">
@@ -74,23 +74,23 @@
                                 <ul>
                                     <li>
                                         <span>Name:</span>
-                                        <p>Anjela Doe</p>
+                                        <p>{{ user.get_full_name }}</p>
                                     </li>
                                     <li>
                                         <span>Father Name:</span>
-                                        <p>Doe Smith</p>
+                                        <p>{{ user.profile.father_name }}</p>
                                     </li>
                                     <li>
                                         <span>Address:</span>
-                                        <p>Box 14 Becon Road Ney Jerys USA</p>
+                                        <p>{{ user.profile.address }}</p>
                                     </li>
                                     <li>
                                         <span>Email Address:</span>
-                                        <p>anjelaadoe@noreply.com</p>
+                                        <p>{{ user.email}}</p>
                                     </li>
                                     <li>
-                                        <span>Program:</span>
-                                        <p>Bachelors of Science, Nursing</p>
+                                        <span>Institute:</span>
+                                        <p>{{ user.profile.institute }}</p>
                                     </li>
                                     <li>
                                         <span>Department:</span>
