@@ -2,7 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-
 from .models import CourseCategory, Basic_info, Slider, Course, Event, Project, CourseLevel, SingleVideo, Testimonial, \
     AboutUs, FAQ, UserMessage, Profile
 from django.contrib.auth.models import User
@@ -52,6 +51,18 @@ def index(request):
         'form': form,
     }
     return render(request, 'takdhum/index.html', context)
+
+
+def subscriber(request):
+    if request.method == 'POST':
+        form = SubcriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+            # messages.success(request, 'You successfully subscribe in Takdhum.')
+    else:
+        form = SubcriberForm()
+    
 
 
 class ProfilePage(generic.DetailView):

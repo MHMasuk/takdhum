@@ -83,7 +83,7 @@
                     <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay="0.8s">
                         <div class="footer-item">
 
-                            <form class="uv-form footer-form" method="post">
+                            <form class="uv-form footer-form" method="post" action="{% url 'subcriber' %}">
                                 {% csrf_token %}
                                 <div class="form-group relative">
                                     <div class="relative">
