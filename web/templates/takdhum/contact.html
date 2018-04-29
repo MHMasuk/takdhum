@@ -10,13 +10,13 @@
     </div>
 </section>
 -->
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <section class="uv-contact">
     <div class="container">
         <div class="row section-separator">
@@ -25,13 +25,6 @@
                     <h4>Leave a Message</h4>
                     <hr class="uv-hr">
                 </div>
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
                 <form class="single-form quate-form" data-toggle="validator" target="#" method="POST">
                     {% csrf_token %}
                     <div id="msgSubmit" class="h3 text-center hidden"></div>

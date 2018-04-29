@@ -15,6 +15,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 # Create your views here.
@@ -63,7 +65,6 @@ def subscriber(request):
     else:
         form = SubcriberForm()
     
-
 
 class ProfilePage(generic.DetailView):
     model = User
@@ -284,7 +285,9 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'You successfully subscribe in Takdhum.')
+            messages.success(request, 'You message send successfully.')
+        else:
+            messages.error(request, 'Please try again!.')
     else:
         form = ContactForm()
     context = {
