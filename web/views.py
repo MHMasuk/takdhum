@@ -468,5 +468,6 @@ class EventListView(generic.ListView):
         context = super(EventListView, self).get_context_data(**kwargs)
         context['info'] = Basic_info.objects.first()
         context['categories'] = CourseCategory.objects.all()
+        context['title']: 'All the event'
         return context
 

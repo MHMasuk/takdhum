@@ -48,13 +48,14 @@
                 <div class="uv-widget no-side-padding">
                     <div class="uv-student-nav">
                         <ul>
-                            <li class="active"><a href="{% url 'profile' %}"><i class="fa fa-user-circle-o gt-color"></i>My Profile</a></li>
+                            <li class="active"><a href="{% url 'user_profile' user.username %}"><i class="fa fa-user-circle-o gt-color"></i>My Profile</a></li>
                             <li><a href="#"><i class="fa fa-bookmark"></i>My Courses</a></li>
-                            <li><a href="#"><i class="fa fa-calendar"></i>Classes</a></li>
-                            <li><a href="#"><i class="fa fa-heart gt-color"></i>My Favorites</a></li>
-                            <li><a href="#"><i class="fa fa-gears"></i>Profile Setting</a></li>
-                            <li><a href="#"><i class="fa fa-lock"></i>Privacy Setting</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                            <!--<li><a href="#"><i class="fa fa-calendar"></i>Classes</a></li>
+                            <li><a href="#"><i class="fa fa-heart gt-color"></i>My Favorites</a></li>-->
+                            <li><a href="{% url 'update_profile' %}"><i class="fa fa-gears"></i>Profile Setting</a></li>
+                            <!--<li><a href="#"><i class="fa fa-lock"></i>Privacy Setting</a></li>-->
+                            <li><a href="{% url 'password_change' %}"><i class="fa fa-lock"></i>Change password</a></li>
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -118,6 +119,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="uv-student-overview">
                         <h3>ABOUT ANJELA DOE</h3>
                         <p><b>Phasellus vitae dapibus sapien. Vestibulum euismod arcu ac leo mattis, eget feugiat nisi venenatis.
@@ -133,6 +135,7 @@
                         Aenean lacinia, mi lobortis ultrices pulvinar, augue est convallis diam, ac condimentum erat enim et metus. Vivamus id mi ac nibh aliquam ornare. Duis lorem eros,
                         egestas consectetur scelerisque sit amet, venenatis sed massa.</p>
                     </div>
+
                     <div class="uv-student-courses-overview">
                         <h3>COURSES</h3>
                         <ul>
@@ -268,6 +271,7 @@
                             </li>
                         </ul>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
