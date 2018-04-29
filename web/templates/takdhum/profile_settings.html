@@ -31,7 +31,9 @@
                         <div class="uv-widget">
                             <div class="uv-student-avatar">
                                 <figure>
+                                    {% if user.profile.profile_picture %}
                                     <img src="{{ user.profile.profile_picture.url }}" alt="">
+                                    {% endif %}
                                 </figure>
                             </div>
                             <div class="uv-student-info">

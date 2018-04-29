@@ -31,17 +31,22 @@
                 <div class="uv-widget">
                     <div class="uv-student-avatar">
                         <figure>
+                            {% if user.profile.profile_picture %}
                             <img src="{{ user.profile.profile_picture.url }}" alt="">
+                            {% endif %}
                         </figure>
                     </div>
                     <div class="uv-student-info">
+
                         <h5>{{ user.username }}</h5>
                         <p>STUDENT ID</p>
                         <label>{{ user.pk }}</label>
                     </div>
                     <div class="uv-student-infor-inner">
                         <h6>Institute</h6>
+                        
                         <span>{{ user.profile.institute }}</span>
+                        
                     </div>
                 </div>
 
@@ -65,7 +70,9 @@
                     <div class="uv-student-profile-details-header">
                         <div class="col-md-4 col-sm-12">
                             <div class="uv-student-img">
+                                {% if user.profile.profile_picture %}
                                 <img src="{{ user.profile.profile_picture.url }}" alt="" class="img-responsive">
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-12">
