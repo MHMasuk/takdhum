@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 from web.models import Profile, UserMessage, Subcribe
 
@@ -26,7 +27,11 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ('username', 'first_name', 'last_name', 'email')
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['class'] = 'col-sm-6'
 
 
 class ProfileForm(forms.ModelForm):
@@ -34,7 +39,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = '__all__'
-
+        exclude = ('slug', 'user')
 
 
 class ContactForm(forms.ModelForm):

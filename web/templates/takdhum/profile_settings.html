@@ -1,0 +1,154 @@
+{% extends 'takdhum/html/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block title %} {{ title }} {% endblock title %}
+{% block body %}
+    <section class="uv-subpage-heading image-bg" style="background-image: url({% static 'takdhum/assets/images/sub-banner.jpg' %});">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="uv-subhead-content col-xs-12">
+                            <h2>My Profile </h2>
+                            <span>Welcome to Curricular university</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="uv-pagination">
+            <div class="container">
+                <ul>
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="uv-profile">
+            <div class="container">
+                <div class="row section-separator">
+                    <div class="col-sm-4 uv-sidebar uv-student-profile-sidebar">
+                        <div class="uv-widget">
+                            <div class="uv-student-avatar">
+                                <figure>
+                                    <img src="{{ user.profile.profile_picture.url }}" alt="">
+                                </figure>
+                            </div>
+                            <div class="uv-student-info">
+                                <h5>{{ user.get_full_name }}</h5>
+                                <p>STUDENT ID</p>
+                                <label>12345</label>
+                            </div>
+                            <div class="uv-student-infor-inner">
+                                <h6>Institute</h6>
+                                <span>{{ user.profile.institute }}</span>
+
+                            </div>
+                        </div>
+
+                        <div class="uv-widget no-side-padding">
+                            <div class="uv-student-nav">
+                                <ul>
+                                    <li class="active"><a href="dashboard-my-profile.html"><i class="fa fa-user-circle-o gt-color"></i>My Profile</a></li>
+                                    <li><a href="dashboard-courses.html"><i class="fa fa-bookmark"></i>My Courses</a></li>
+                                    <li><a href="dashboard-classes.html"><i class="fa fa-calendar"></i>Classes</a></li>
+                                    <li><a href="dashboard-fav-courses.html"><i class="fa fa-heart gt-color"></i>My Favorites</a></li>
+                                    <li><a href="dashboard-privacy-setting.html"><i class="fa fa-gears"></i>Profile Setting</a></li>
+                                    <li><a href="dashboard-profile-setting.html"><i class="fa fa-lock"></i>Privacy Setting</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="uv-sudent-profile-info">
+                            <div class="uv-student-courses-overview">
+                                <h3>Profile Setting</h3>
+
+                                <div class="uv-profile-setting-inner">
+
+                                    <form class="uv-profile-setting-form" method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            {{ user_form|crispy }}
+                                            {{ profile_form|crispy }}
+                                            <div class="col-xs-12">
+                                                <input type="submit" value="Update Profile" class="btn btn-fill">
+                                            </div>
+                                    </form>
+
+
+                                    <!--
+                                    <form class="uv-profile-setting-form" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <input type="text" value="{{ user.first_name }}" name="first_name" id="id_first_name" placeholder="First/Last Name" class="form-control"/>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <input type="text" name="last_name" value="{{ user.last_name }}" id="id_last_name" placeholder="Profile/username" class="form-control"/>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <input type="email" name="email" id="id_email" value="{{ user.email }}" placeholder="Email" class="form-control"/>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <input type="text" name="phone_number" value="{{ user.profile.phone_number }}" placeholder="Phone" class="form-control"/>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <input type="text" name="" value="{{ user.profile.institute}}" placeholder="Institute" class="form-control"/>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <input name="" id="" class="form-control" value="{{ user.profile.address }}" placeholder="About You" cols="30" rows="6"/>
+                                            </div>
+                                            <hr>
+                                            <div class="clearfix"></div>
+                                            <div class="col-md-5 col-sm-12">
+                                                <h3>UPLOAD PHOTO</h3>
+                                            </div>
+                                            <div class="col-md-7 col-sm-12">
+                                                <h3>OTHER PHOTOS</h3>
+                                                <a href="#" class="btn btn-fill margin-b-15">Choose Photo</a>
+                                                <ul class="uv-choose-photo">
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/android_4.jpg" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/ios_4.jpg" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/javascript_4.png" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/laravel_4.png" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/photography_4.jpg" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/team_4.jpg" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/wordpress_4.jpg" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/x-logo_4.png" alt="" class="img-responsive"></li>
+                                                    <li class="col-md-4 col-sm-6"><img src="assets/images/b1.jpg" alt="" class="img-responsive"></li>
+                                                </ul>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="uv-social-setting">
+                                                <h3 class="margin-b-15 col-xs-12">Social: </h3>
+
+                                                <div class="form-group col-sm-6">
+                                                    <input type="text" value="{{ user.profile.facebook }}" name="" placeholder="Facebook" class="form-control"/>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <input type="text" name="" value="{{ user.profile.twitter }}" placeholder="Twitter" class="form-control"/>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <input type="text" name="" value="{{ user.profile.linkedin }}" placeholder="Linkinin" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <input type="submit" value="Update Profile" class="btn btn-fill">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+{% block script %}
+<!-- init -->
+<script src="{% static "takdhum/assets/js/init.js" %}"></script>
+
+{% endblock %}

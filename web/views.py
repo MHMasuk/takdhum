@@ -56,28 +56,39 @@ def index(request):
 
 class ProfilePage(generic.DetailView):
     model = User
+    slug_field = 'username'
     template_name = 'takdhum/user_profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfilePage, self).get_context_data(**kwargs)
+        context['info'] = Basic_info.objects.first()
+        context['categories'] = CourseCategory.objects.all()
+        return context
 
 
 @login_required
 @transaction.atomic
 def update_profile(request):
+    categories = CourseCategory.objects.all()
+    basic_info = Basic_info.objects.first()
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            #messages.success(request, _('Your profile was successfully updated!'))
+            #messages.success(request, 'Your profile was successfully updated!')
             return redirect('index')
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error(request, 'Please correct the error below.')
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'update_profiles.html', {
+    return render(request, 'takdhum/profile_settings.html', {
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        'info': basic_info,
+        'categories': categories,
     })
 
 
@@ -262,7 +273,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            messages.success(request, 'You successfully subscribe in Takdhum.')
     else:
         form = ContactForm()
     context = {

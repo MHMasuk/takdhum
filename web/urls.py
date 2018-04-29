@@ -22,7 +22,7 @@ urlpatterns = [
     # path('activate/<uidb64>/<token>', views.activate, name='activate'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
      views.activate, name='activate'),
-    path('user_profile/<int:pk>/', views.ProfilePage.as_view(), name='user_profile'),
+    path('takdhum/profile/<slug:slug>/', views.ProfilePage.as_view(), name='user_profile'),
     path('update_profile/', views.update_profile, name='update_profile'),
     path('events_list', views.EventListView.as_view(), name='event_list'),
 ]

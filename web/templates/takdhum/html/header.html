@@ -104,14 +104,14 @@
                                         {{ request.user }}
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{% url 'user_profile' user.pk %}">Profile</a></li>
-                                        <li><a href="{% url 'update_profile' %}">Update Profile</a></li>
+                                        <li><a href="{% url 'user_profile' user.username %}">Profile</a></li>
+                                        <li><a href="{% url 'update_profile' %}">Profile Settings</a></li>
                                         <!--<li><a href="{% url 'profile' %}">Profile</a></li>-->
-                                        <li><a href="#">Classes</a></li>
+                                        <!--<li><a href="#">Classes</a></li>-->
                                         <li><a href="#">Courses</a></li>
-                                        <li><a href="#">Favorite Course</a></li>
+                                        <!--<li><a href="#">Favorite Course</a></li>
                                         <li><a href="#">Privacy Setting</a></li>
-                                        <li><a href="#">Profile Setting</a></li>
+                                        <li><a href="#">Profile Setting</a></li>-->
                                         <li><a href="{% url 'password_change' %}">Change Password</a></li>
                                         <li><a href="{% url 'logout' %}">Logout</a></li>
                                     </ul>
@@ -171,13 +171,15 @@
                         {% if request.user.is_authenticated %}
                         <li><a class="main-a" href="#">{{ request.user }}</a>
                             <ul>
-                                <li><a href="#">Profile</a></li>
+                                <li><a href="{% url 'user_profile' user.username %}">Profile</a></li>
+                                <li><a href="{% url 'update_profile' %}">Profile Settings</a></li>
                                 <!--<li><a href="{% url 'profile' }">Profile</a></li>-->
-                                <li><a href="#">Classes</a></li>
+                                <!--<li><a href="#">Classes</a></li>-->
                                 <li><a href="#">Courses</a></li>
-                                <li><a href="#">Favorite Course</a></li>
+                                <!--<li><a href="#">Favorite Course</a></li>
                                 <li><a href="#">Privacy Setting</a></li>
-                                <li><a href="#">Profile Setting</a></li>
+                                <li><a href="#">Profile Setting</a></li>-->
+                                <li><a href="{% url 'password_change' %}">Change Password</a></li>
                                 <li><a href="{% url 'logout' %}">Logout</a></li>
                             </ul>
                         </li>

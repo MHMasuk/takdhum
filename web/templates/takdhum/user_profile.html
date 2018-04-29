@@ -40,10 +40,8 @@
                         <label>{{ user.pk }}</label>
                     </div>
                     <div class="uv-student-infor-inner">
-                        <h6>Program</h6>
-                        <span>Bachelors of Science, Nursing</span>
-                        <h6>Semester</h6>
-                        <span>4th Semester</span>
+                        <h6>Institute</h6>
+                        <span>{{ user.profile.institute }}</span>
                     </div>
                 </div>
 
@@ -81,6 +79,10 @@
                                         <p>{{ user.profile.father_name }}</p>
                                     </li>
                                     <li>
+                                        <span>Mother Name:</span>
+                                        <p>{{ user.profile.mother_name }}</p>
+                                    </li>
+                                    <li>
                                         <span>Address:</span>
                                         <p>{{ user.profile.address }}</p>
                                     </li>
@@ -93,12 +95,24 @@
                                         <p>{{ user.profile.institute }}</p>
                                     </li>
                                     <li>
-                                        <span>Department:</span>
-                                        <p>School of Nursing</p>
+                                        <span>Facebook ID:</span>
+                                        <p>{{ user.profile.facebook }}</p>
+                                    </li>
+                                    <li>
+                                        <span>Twitter ID:</span>
+                                        <p>{{ user.profile.twitter }}</p>
+                                    </li>
+                                    <li>
+                                        <span>LinkrdIn ID:</span>
+                                        <p>{{ user.profile.linkedin }}</p>
+                                    </li>
+                                    <li>
+                                        <span>Phone No:</span>
+                                        <p>{{ user.profile.phone_number }}</p>
                                     </li>
                                     <li>
                                         <span>Student ID:</span>
-                                        <p>12345</p>
+                                        <p>{{ user.id }}</p>
                                     </li>
                                 </ul>
                             </div>

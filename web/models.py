@@ -1,47 +1,37 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
+from django.utils.text import slugify
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    slug = models.SlugField()
     profile_picture = models.ImageField(upload_to='Profile_picture/', null=True, blank=True)
-    father_name = models.TextField(max_length=255, blank=True, null=True)
-    mother_name = models.TextField(max_length=255, blank=True, null=True)
-    phone_number = models.TextField(max_length=255, blank=True, null=True)
-    address = models.TextField(max_length=30, blank=True, null=True)
-    institute = models.TextField(max_length=255, blank=True, null=True)
-    facebook = models.TextField(max_length=255, blank=True, null=True)
-    twitter = models.TextField(max_length=255, blank=True, null=True)
-    youtube = models.TextField(max_length=255, blank=True, null=True)
-    linkedin = models.TextField(max_length=255, blank=True, null=True)
+    father_name = models.CharField(max_length=255, blank=True, null=True)
+    mother_name = models.CharField(max_length=255, blank=True, null=True)
+    phone_number = models.IntegerField(blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    institute = models.CharField(max_length=255, blank=True, null=True)
+    facebook = models.CharField(max_length=255, blank=True, null=True)
+    twitter = models.CharField(max_length=255, blank=True, null=True)
+    youtube = models.CharField(max_length=255, blank=True, null=True)
+    linkedin = models.CharField(max_length=255, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.user.username)
+        super(Profile, self).save(*args, **kwargs)
+
+    def get_absulete_url(self):
+        return reverse('user_profile', args=[str(self.slug)])
 
 
-"""
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-    
-def create_profile(sender, instance, created, *args, **kwargs):
-    # ignore if this is an existing User
-    if not created:
-        return
-    Profile.objects.create(user=instance)
-post_save.connect(create_profile, sender=User)
-    
-"""
 @receiver(post_save, sender=User)
 def create_profile_for_user(sender, instance=None, created=False, **kwargs):
     if created:
         Profile.objects.get_or_create(user=instance)
-
-
 
 
 class CourseCategory(models.Model):
