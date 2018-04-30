@@ -15,12 +15,6 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
-
-
-# Create your views here.
-
 
 
 def index(request):
@@ -45,7 +39,7 @@ def index(request):
     context = {
         'categories': categories,
         'slides': sliders,
-        'courses': courses,
+        's': courses,
         'info': basic_info,
         'events': events,
         'projects': projects,
@@ -60,8 +54,11 @@ def subscriber(request):
         form = SubcriberForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'You successfully subscribe in Takdhum.')
             return redirect('index')
-            # messages.success(request, 'You successfully subscribe in Takdhum.')
+        else:
+            messages.error(request, 'Something Wrong!! Please try again.')
+            return redirect('index')
     else:
         form = SubcriberForm()
     
@@ -89,6 +86,7 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            user = request.user
             #messages.success(request, 'Your profile was successfully updated!')
             return redirect('user_profile', request.user)
         else:
@@ -101,6 +99,7 @@ def update_profile(request):
         'profile_form': profile_form,
         'info': basic_info,
         'categories': categories,
+        'title': 'Update Profile',
     })
 
 
@@ -286,14 +285,17 @@ def contact(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'You message send successfully.')
+            redirect('contact_page')
         else:
             messages.error(request, 'Please try again!.')
+            redirect('contact_page')
     else:
         form = ContactForm()
     context = {
         'info': basic_info,
         'categories': categories,
         'form': form,
+        'title': 'Contact',
     }
     return render(request, 'takdhum/contact.html', context)
 
@@ -482,6 +484,5 @@ class EventListView(generic.ListView):
         context = super(EventListView, self).get_context_data(**kwargs)
         context['info'] = Basic_info.objects.first()
         context['categories'] = CourseCategory.objects.all()
-        context['title']: 'All the event'
         return context
 

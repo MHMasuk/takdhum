@@ -43,6 +43,7 @@
                 <div class="row">
                     <div class="uv-courses-2">
                         <div class="">
+                            {% if courses %}
                             {% for c in courses %}
                             <div class="col-md-4 col-sm-6">
                                 <div class="uv-courese-single-thumb uv-shadow">
@@ -73,6 +74,9 @@
                                 </div>
                             </div>
                             {% endfor %}
+                        {% else %}
+                                <p>There is no course added yet.</p>
+                        {% endif %}
 
                         </div>
                     </div>

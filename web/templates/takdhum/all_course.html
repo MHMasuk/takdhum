@@ -35,7 +35,7 @@
         <div class="row">
             <div class="uv-courses-2">
                 <div class="">
-
+                    {% if courses %}
                     {% for c in courses %}
                      <div class="col-md-3 col-sm-6">
 
@@ -67,6 +67,9 @@
                         </div>
                      </div>
                     {% endfor %}
+                {% else %}
+                        <h4>There is no course added yet!</h4>
+                {% endif %}
 
                 </div>
             </div>

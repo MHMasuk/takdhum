@@ -1,7 +1,7 @@
 {% extends 'takdhum/html/base.html' %}
 {% load staticfiles %}
 
-{% block title %} {{ title }} {% endblock title %}
+{% block title %} {{ user.username|title }} {% endblock title %}
 {% block body %}
 <section class="uv-subpage-heading image-bg" style="background-image: url({% static 'takdhum/assets/images/sub-banner.jpg' %});">
     <div class="overlay">
