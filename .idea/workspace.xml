@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f46c9164-9d62-4640-b6fb-530fad5ef831" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/takdhum.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/takdhum.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takdhum/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/takdhum/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/registration/password_change_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/registration/password_change_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/registration/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/registration/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/registration/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/registration/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/registration/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/all_course.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/all_course.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/course_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/course_category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/event_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/event_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/html/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/html/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/html/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/html/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/single_course.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/single_course.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/takdhum/user_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/takdhum/user_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/tokens.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,19 +64,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/templates/takdhum/html/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-289">
-              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+            <state relative-caret-position="221">
+              <caret line="133" column="58" selection-start-line="133" selection-start-column="58" selection-end-line="133" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="password_reset_form.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="password_reset_form.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/templates/registration/password_reset_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="68">
               <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
             </state>
           </provider>
@@ -177,7 +158,6 @@
         <option value="$PROJECT_DIR$/web/templates/registration/password_change_done.html" />
         <option value="$PROJECT_DIR$/web/templates/registration/password_reset_complete.html" />
         <option value="$PROJECT_DIR$/web/templates/registration/password_reset_confirm.html" />
-        <option value="$PROJECT_DIR$/web/templates/takdhum/html/header.html" />
         <option value="$PROJECT_DIR$/web/templates/takdhum/single_course.html" />
         <option value="$PROJECT_DIR$/web/templates/takdhum/course_category.html" />
         <option value="$PROJECT_DIR$/web/templates/takdhum/all_course.html" />
@@ -185,6 +165,7 @@
         <option value="$PROJECT_DIR$/web/templates/takdhum/contact.html" />
         <option value="$PROJECT_DIR$/web/views.py" />
         <option value="$PROJECT_DIR$/web/templates/registration/password_reset_form.html" />
+        <option value="$PROJECT_DIR$/web/templates/takdhum/html/header.html" />
       </list>
     </option>
   </component>
@@ -738,13 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/takdhum/html/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -757,8 +731,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/templates/registration/password_reset_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="68">
           <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/templates/takdhum/html/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="133" column="58" selection-start-line="133" selection-start-column="58" selection-end-line="133" selection-end-column="58" />
         </state>
       </provider>
     </entry>
