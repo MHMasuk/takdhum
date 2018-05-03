@@ -2,8 +2,14 @@
 {% load staticfiles %}
 
 {% block title %} {{ title }} {% endblock title %}
-
-
+{% block meta %}
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="description" content="{{ single_event.title }}" />
+<meta name="keywords" content="Takdhum Event {{ single_event.title }}" />
+<meta name="developer" content="Md. Mohaymenul Islam">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+{% endblock meta %}
 
 {% block css %}
 <style>
@@ -155,6 +161,7 @@ img.hover-shadow {
 <h3 style="text-align:center">Event: {{ single_event.title }}</h3>
 <h6 style="text-align:center">{{ single_event.upload_time|timesince }} ago at {{ single_event.location }}</h6>
 
+<div class="container">
 <div class="row">
   {% if single_event.gallery_image1 %}
   <div class="column">
@@ -225,7 +232,7 @@ img.hover-shadow {
   </div>
   {% endif %}
 </div>
-
+</div>
 <div id="myModal" class="modal">
   <span class="close cursor" onclick="closeModal()">&times;</span>
   <div class="modal-content">

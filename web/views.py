@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from web.filters import CourseFilter
+
 from .models import CourseCategory, Basic_info, Slider, Course, Event, Project, CourseLevel, SingleVideo, Testimonial, \
     AboutUs, FAQ, UserMessage, Profile
 from django.contrib.auth.models import User
@@ -26,6 +28,8 @@ def index(request):
     sliders = Slider.objects.all()
     courses = Course.objects.all()[::-1]
     events = Event.objects.all().order_by('-upload_time')
+    if len(events) > 3:
+        events = events[0:3]
     projects = Project.objects.all().order_by('-upload_time')
     testimonials = Testimonial.objects.last()
 
@@ -61,7 +65,7 @@ def subscriber(request):
             return redirect('index')
     else:
         form = SubcriberForm()
-    
+
 
 class ProfilePage(generic.DetailView):
     model = User
@@ -382,7 +386,7 @@ def get_login(request):
                 login(request, auth)
                 # messages.add_message(request, messages.ERROR, 'Login Successful')
                 # return redirect('profile')
-                return redirect('index')
+                return redirect('profile')
             else:
                 messages.add_message(request, messages.ERROR, 'Username or Password Wrong!')
     return render(request, 'takdhum/login-reg.html', context)
@@ -445,7 +449,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return redirect('index')
+        return redirect('profile')
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         # return HttpResponse('Your account will be activate within 6 hours.')
@@ -478,7 +482,7 @@ class EventListView(generic.ListView):
     context_object_name = 'events'
 
     def get_queryset(self):
-        return Event.objects.all()
+        return Event.objects.all().order_by('-upload_time')
 
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
@@ -486,3 +490,12 @@ class EventListView(generic.ListView):
         context['categories'] = CourseCategory.objects.all()
         return context
 
+
+def search(request):
+    course_list = Course.objects.all()
+    course_filter = CourseFilter(request.GET, queryset=course_list)
+    basic_info = Basic_info.objects.first()
+    categories = CourseCategory.objects.all()
+    return render(request, 'takdhum/search/course_list.html', {'filter': course_filter,
+                                                               'info': basic_info,
+                                                               'categories': categories})

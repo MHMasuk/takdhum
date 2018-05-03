@@ -2,9 +2,8 @@
 <!--Search start-->
         <div class="uv-course-nav">
 
-            <form action="#" method="post" class="uv-nav-form">
-                {% csrf_token %}
-                <input type="text" placeholder=" Search.." name="search" style="width: 93%;font-size:24px;padding:5px;box-sizing:border-box;border-radius: 5px;">
+            <form action="{% url 'search' %}" method="get" class="uv-nav-form">
+                <input type="text" placeholder=" Search.." name="course_title" style="width: 93%;font-size:24px;padding:5px;box-sizing:border-box;border-radius: 5px;" id="id_course_title">
                 <button type="submit" style="font-size:24px;"><i class="fa fa-search"></i></button>
 
                 <!--<ul class="row">-->

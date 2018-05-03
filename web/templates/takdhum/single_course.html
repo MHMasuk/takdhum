@@ -2,6 +2,14 @@
 {% load staticfiles %}
 
 {% block title %} {{ title }} {% endblock title %}
+{% block meta %}
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="description" content="{{ course_name.course_title }}, Takdhum online art school in Bangladesh." />
+<meta name="keywords" content="Takdhum Course, {{ course_name.course_title }}" />
+<meta name="developer" content="Md. Mohaymenul Islam">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+{% endblock meta %}
 
 {% block body %}
     <section class="row">
@@ -18,7 +26,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <a href="{% url 'login' %}">
+                        <a href="{% url 'get_login' %}">
                             <button type="button" class="btn btn-primary">Login</button>
                         </a>
                     </div>
@@ -30,6 +38,7 @@
             <div class="col-sm-8" id='videoDisplay'>
                 <h1 class="text-center">Select a video</h1>
                 <!--<iframe width="780" height="428" src="//www.youtube.com/embed/oR-6N1Dc_zc" frameborder="0" allowfullscreen></iframe>-->
+
             </div>
 
             <!-- Video List -->
@@ -51,7 +60,8 @@
                         <div class="list-group">
                             {% if course_videos %}
                                 {% for video in course_videos %}
-                                    {% if forloop.first or request.user.is_authenticated %}
+                                    {# {% if forloop.first or request.user.is_authenticated %} #}
+                                    {% if request.user.is_authenticated %}
                                         <a href="#" class="list-video list-group-item"
                                            data-link="{{ video.video_link }}?modestbranding=1&autoplay=1&loop=1&rel=0&showinfo=1">
                                             <i class="fa fa-youtube-play"></i> {{ video.video_title }}</a>

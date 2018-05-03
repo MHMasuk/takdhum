@@ -26,4 +26,5 @@ urlpatterns = [
     path('update_profile/', views.update_profile, name='update_profile'),
     path('events_list', views.EventListView.as_view(), name='event_list'),
     path('subcriber', views.subscriber, name='subcriber'),
+    path('search', views.search, name='search'),
 ]

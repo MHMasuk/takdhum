@@ -32,9 +32,9 @@
                             <i class="fa fa-search"></i>
                         </div>
                         <div id="besocial-search-bar" class="">
-                            <form class="besocial-topbar-searchbox">
+                            <form class="besocial-topbar-searchbox" action="{% url 'search' %}" method="get">
                                 <input type="text" class="besocial-topbar-searchtext" placeholder="Search..."
-                                       name="search">
+                                       name="course_title" id="id_course_title">
                                 <input type="submit" class="fa-input" name="submit" value="Go">
                             </form>
                         </div>
@@ -50,14 +50,18 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="uv-logo">
-                            <a href="{% url 'index' %}">
-                                {% if info.logo.url %}
+                            {% if info.logo.url %}
+                                <a href="{% url 'index' %}">
                                     <img src="{{ info.logo.url }}" alt="" class="img-responsive">
-                                {% else %}
+                                </a>
+                            {% else %}
+                                <a href="{% url 'index' %}">
                                     <img src="{% static 'takdhum/assets/images/univ-logo.png' %}" alt=""
                                          class="img-responsive">
-                                {% endif %}
-                            </a>
+                                </a>
+                            {% endif %}
+
+
                         </div>
                     </div>
                     <div class="col-sm-8 pull-right">
@@ -207,7 +211,7 @@
                                 </ul>
                             </li>
                         {% else %}
-                            <li><a class="main-a" href="{% url 'login' %}">Login</a></li>
+                            <li><a class="main-a" href="{% url 'get_login' %}">Login</a></li>
                         {% endif %}
                     </ul>
                 </nav>

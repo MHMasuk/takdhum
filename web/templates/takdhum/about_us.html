@@ -2,7 +2,14 @@
 {% load staticfiles %}
 
 {% block title %} About Us {% endblock title %}
-
+{% block meta %}
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="description" content="{{ about.our_journey }}" />
+<meta name="keywords" content="About Us Takdhum Online Art School in Bangladesh" />
+<meta name="developer" content="Md. Mohaymenul Islam">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+{% endblock meta %}
 {% block body %}
 
 

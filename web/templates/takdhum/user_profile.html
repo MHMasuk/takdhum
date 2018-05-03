@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="uv-subhead-content col-xs-12">
                     <h2>{{ user.username|title }} Profile </h2>
-                    <span>Welcome to Curricular university</span>
+                    <span>Welcome to Takdhum Online Art School</span>
                 </div>
             </div>
         </div>
@@ -40,13 +40,13 @@
 
                         <h5>{{ user.username }}</h5>
                         <p>STUDENT ID</p>
-                        <label>{{ user.pk }}</label>
+                        <label>1000{{ user.pk }}</label>
                     </div>
                     <div class="uv-student-infor-inner">
                         <h6>Institute</h6>
-                        
+
                         <span>{{ user.profile.institute }}</span>
-                        
+
                     </div>
                 </div>
 
@@ -83,6 +83,10 @@
                                         <p>{{ user.get_full_name }}</p>
                                     </li>
                                     <li>
+                                        <span>Student ID:</span>
+                                        <p>1000{{ user.id }}</p>
+                                    </li>
+                                    <li>
                                         <span>Father Name:</span>
                                         <p>{{ user.profile.father_name }}</p>
                                     </li>
@@ -90,9 +94,10 @@
                                         <span>Mother Name:</span>
                                         <p>{{ user.profile.mother_name }}</p>
                                     </li>
+
                                     <li>
-                                        <span>Address:</span>
-                                        <p>{{ user.profile.address }}</p>
+                                        <span>Phone No:</span>
+                                        <p>{{ user.profile.phone_number }}</p>
                                     </li>
                                     <li>
                                         <span>Email Address:</span>
@@ -103,6 +108,10 @@
                                         <p>{{ user.profile.institute }}</p>
                                     </li>
                                     <li>
+                                        <span>Address:</span>
+                                        <p>{{ user.profile.address }}</p>
+                                    </li>
+                                    <li>
                                         <span>Facebook ID:</span>
                                         <p>{{ user.profile.facebook }}</p>
                                     </li>
@@ -111,17 +120,10 @@
                                         <p>{{ user.profile.twitter }}</p>
                                     </li>
                                     <li>
-                                        <span>LinkrdIn ID:</span>
+                                        <span>LinkedIn ID:</span>
                                         <p>{{ user.profile.linkedin }}</p>
                                     </li>
-                                    <li>
-                                        <span>Phone No:</span>
-                                        <p>{{ user.profile.phone_number }}</p>
-                                    </li>
-                                    <li>
-                                        <span>Student ID:</span>
-                                        <p>{{ user.id }}</p>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
